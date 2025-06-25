@@ -20,4 +20,9 @@ class Pertanyaan extends Model
     {
         return $this->hasMany(Jawaban::class, 'id_pertanyaan');
     }
+	
+	public function pertanyaan()
+	{
+		return $this->belongsTo(\App\Models\Pertanyaan::class, 'id_pertanyaan');
+	}
 }

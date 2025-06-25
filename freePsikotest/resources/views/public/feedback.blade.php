@@ -35,7 +35,7 @@
             </div>
             <div class="form-floating mb-3">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                    style="height: 6rem" required></textarea>
+                    style="height: 6rem" required name="kritik"></textarea>
                 <label for="floatingTextarea2">Berikan kritik dan saran</label>
             </div>
             <div class="text-end">

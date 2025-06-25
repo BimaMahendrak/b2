@@ -30,11 +30,8 @@ Route::get('/biodata', function () {
 
 Route::post('/biodata', [publicController::class, 'addBiodata'])->name('biodataAdd');
 
-Route::get('/tes', function () {
-    return view('public.tes');
-})->name('tes');
-
-Route::post('/tes', [publicController::class, 'addTes'])->name('tesAdd');
+Route::get('/tes/{no?}', [publicController::class, 'showTes'])->name('tes');
+Route::post('/tes/{no}', [publicController::class, 'addTes'])->name('tesAdd');
 
 Route::get('/feedback', function () {
     return view('public.feedback');
@@ -42,9 +39,7 @@ Route::get('/feedback', function () {
 
 Route::post('/feedback', [publicController::class, 'addFeedback'])->name('feedbackAdd');
 
-Route::get('/hasil', function () {
-    return view('public.hasil');
-})->name('hasil');
+Route::get('/hasil', [publicController::class, 'hasil'])->name('hasil');
 
 Route::get('/selesai', function () {
     return redirect()->route('home')->with('success', 'Terima kasih atas feedback Anda!');

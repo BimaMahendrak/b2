@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tes Kesehatan Mental Gratis - Barbim</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <style>
@@ -219,17 +220,9 @@
                 @yield('content')
             </div>
         </main>
-
         <footer class="text-center position-relative" style="z-index: 1;">
             @if (View::hasSection('tes'))
-                <div class="container">
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100" color="black">
-                            25%
-                        </div>
-                    </div>
-                </div>
+                @yield('tes')
             @endif
             <div class="container">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
@@ -245,8 +238,7 @@
                 </p>
             </div>
         </footer>
-
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    @stack('scripts')
+</body>
 </html>

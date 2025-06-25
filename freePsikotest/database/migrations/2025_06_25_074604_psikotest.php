@@ -32,7 +32,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('email', 100)->unique();
             $table->string('tempat_tanggal_lahir', 100)->nullable();
-            $table->date('tanggal_ujian')->nullable();
+            $table->dateTime('tanggal_ujian')->nullable();
         });
 
         // Tabel jawaban

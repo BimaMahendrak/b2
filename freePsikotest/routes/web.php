@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\publicController;
+use App\Http\Controllers\dashboardControlleer;
+use App\Http\Controllers\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,8 @@ Route::get('/selesai', function () {
         return view('dashboard.login');
     })->name('login');
 
+    Route::post('/login', [dashboardController::class, 'login'])->name('loging');
+
     Route::get('/respon', function () {
         return view('dashboard.respon');
     })->name('respon');
@@ -67,4 +71,6 @@ Route::get('/selesai', function () {
     Route::get('/soal', function () {
         return view('dashboard.soal');
     })->name('soal');
+
+    Route::get('/logout',  [dashboardController::class, 'logout'])->name('logout');
 });

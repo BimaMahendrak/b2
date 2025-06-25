@@ -32,7 +32,7 @@ class publicController extends Controller
     {
         $validated = $request->validate([
             'likert' => 'required|in:1,2,3,4,5',
-            'kritik' => 'nullable|string|max:1000',
+            'kritik' => 'required|string|max:1000',
         ]);
 
         return redirect()->route('hasil');

@@ -201,6 +201,13 @@
             height: 100%;
             background-color: #B7D7E8;
             border-radius: 0.375rem;
+            transition: background-color 1s ease, color 1.5s ease, font-weight 1.5s ease;
+        }
+
+        .custom-progress-bar:hover {
+            background-color: #436374;
+            color: #F5F5F5;
+            font-weight: 900;
         }
     </style>
 </head>

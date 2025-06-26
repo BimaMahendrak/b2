@@ -11,7 +11,7 @@
             $likertLabels = [
                 1 => ['Sangat Buruk', 'badest'],
                 2 => ['Cukup Buruk', 'bad'],
-                3 => ['Sedikit Buruk', 'smile'],
+                3 => ['Biasa Saja', 'smile'],
                 4 => ['Cukup Baik', 'happy'],
                 5 => ['Sangat Baik', 'active'],
             ];

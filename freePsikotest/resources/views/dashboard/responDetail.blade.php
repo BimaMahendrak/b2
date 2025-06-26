@@ -52,10 +52,21 @@
                                 <td>
                                     @php
                                         $feedback = \App\Models\Feedback::where('id_responden', $responden->id_responden)->first();
+                                        $likertLabels = [
+                                            1 => ['Sangat Buruk', 'badest'],
+                                            2 => ['Cukup Buruk', 'bad'],
+                                            3 => ['Biasa Saja', 'smile'],
+                                            4 => ['Cukup Baik', 'happy'],
+                                            5 => ['Sangat Baik', 'active'],
+                                        ];
                                     @endphp
                                     @if($feedback)
-                                        <b>Rating:</b> {{ $feedback->rating }}<br>
-                                        <b>Ulasan:</b> {{ $feedback->ulasan }}
+                                        @foreach ($likertLabels as $value => $label)
+                                            @if($value == $feedback->rating)
+                                                <b><img src="{{ asset('images/hiu/' . $label[1] . '.svg') }}" width="40px">
+                                                    {{ $label[0]}}</b>, {{ $feedback->ulasan }}
+                                            @endif
+                                        @endforeach
                                     @else
                                         <span class="text-muted">Belum ada feedback</span>
                                     @endif
@@ -70,11 +81,6 @@
                 <div class="bg-white p-4">
                     <canvas id="mainChart" height="200"></canvas>
                 </div>
-                <ul class="mt-3">
-                    @foreach($hasil as $kategori => $nilai)
-                        <li><b>{{ $kategori }}</b>: {{ $nilai }}</li>
-                    @endforeach
-                </ul>
             </div>
         </div>
         <b>Detail Jawaban:</b>
@@ -104,8 +110,8 @@
                 labels: ['Depression', 'Anxiety', 'Stress'],
                 datasets: [{
                     data: [
-                        {{ $hasil['Depression'] ?? 0 }},
-                        {{ $hasil['Anxiety'] ?? 0 }},
+                                                    {{ $hasil['Depression'] ?? 0 }},
+                                                    {{ $hasil['Anxiety'] ?? 0 }},
                         {{ $hasil['Stress'] ?? 0 }}
                     ],
                     label: "Hasil Responden",

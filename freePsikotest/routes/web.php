@@ -59,13 +59,19 @@ Route::get('/selesai', function () {
 
     Route::post('/login', [dashboardController::class, 'login'])->name('loging');
 
-    Route::get('/respon', function () {
-        return view('dashboard.respon');
-    })->name('respon');
+    Route::get('/soal', [dashboardController::class, 'soal'])->name('soal');
 
-    Route::get('/soal', function () {
-        return view('dashboard.soal');
-    })->name('soal');
+    Route::post('/soalAdd', [dashboardController::class, 'soalAdd'])->name('soalAdd');
 
+    Route::post('/soalEdit', [dashboardController::class, 'soalEdit'])->name('soalEdit');
+
+    Route::post('/soalDelete', [dashboardController::class, 'soalDelete'])->name('soalDelete');
+
+    Route::get('/respon', [dashboardController::class, 'respon'])->name('respon');
+
+    Route::get('/responDetail', [dashboardController::class, 'responDetail'])->name('responDetail');
+
+    Route::post('/responDelete', [dashboardController::class, 'responDelete'])->name('responDelete');
+    
     Route::get('/logout',  [dashboardController::class, 'logout'])->name('logout');
 });

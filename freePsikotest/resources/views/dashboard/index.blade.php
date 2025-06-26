@@ -1,74 +1,73 @@
 @extends('layout.dashboard')
 
 @section('content')
-    <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
-        <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip"
-            data-bs-placement="right" data-bs-original-title="Icon-only">
-            <svg class="bi" width="40" height="32">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="visually-hidden">Icon-only</span>
-        </a>
-        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-            <li class="nav-item">
-                <a href="#" class="nav-link active py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Home">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-speedometer2" viewBox="0 0 16 16">
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z" />
-                        <path fill-rule="evenodd"
-                            d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3" />
-                    </svg>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                    data-bs-original-title="Dashboard">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard">
-                        <use xlink:href="#speedometer2"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                    data-bs-original-title="Orders">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Orders">
-                        <use xlink:href="#table"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                    data-bs-original-title="Products">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Products">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                    data-bs-original-title="Customers">
-                    <svg class="bi" width="24" height="24" role="img" aria-label="Customers">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-        <div class="dropdown border-top">
-            <a href="#"
-                class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
+    <h1 class="fw-bold">
+        Dashboard Tes Kesehatan Mental Gratis
+    </h1>
+    <p class="text-body-secondary mb-4">Halaman ini menunjukkan jumlah pernyataan, responden, dan grafik rata-rata kondisi
+        responden.</p>
+    <div class="row align-items-stretch g-4">
+        <div class="col-12 col-lg-4">
+            <div class="d-flex flex-column flex-md-row flex-lg-column gap-3 h-100">
+                <div class="d-flex bg-white shadow rounded-4 p-3 align-items-center flex-grow-1">
+                    <div class="bg-info-subtle rounded-circle d-flex justify-content-center align-items-center me-3"
+                        style="width: 60px; height: 60px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" fill="#436374" class="bi bi-card-heading"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                            <path
+                                d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-0">128</h2>
+                        <small class="text-muted">Soal</small>
+                    </div>
+                </div>
+                <div class="d-flex bg-white shadow rounded-4 p-3 align-items-center flex-grow-1">
+                    <div class="bg-info-subtle rounded-circle d-flex justify-content-center align-items-center me-3"
+                        style="width: 60px; height: 60px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" fill="#436374" class="bi bi-person"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-0">123</h2>
+                        <small class="text-muted">Responden</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+            <div class="bg-white shadow rounded-4 p-4 h-100">
+                <canvas id="mainChart" height="200"></canvas>
+            </div>
         </div>
     </div>
+    <script>
+        const ctx = document.getElementById('mainChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Depression', 'Anxiety', 'Stress'],
+                datasets: [{
+                    data: [20, 90, 35],
+                    label: "Rata-Rata Hasil Responden",
+                    borderColor: '#436374',
+                    backgroundColor: ['rgba(168, 213, 186, 0.6)', 'rgba(193, 225, 193, 0.6)', 'rgba(183, 215, 232, 0.6)'],
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    </script>
+
 @endsection

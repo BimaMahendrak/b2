@@ -5,7 +5,7 @@
         style="border:#B7D7E8 1px dashed; justify-self: center;width: 60%;">
         <h1 class="text-body-emphasis display-4 fw-semibold bg-info-subtle fw-bold px-1">Biodata</h1>
         <p class="fs-6 my-3">
-            Data yang Anda berikan hanya akan dipakai untuk keperluan yang relevan dan disimpan dengan aman
+            Data Anda hanya dipakai untuk keperluan yang relevan dan disimpan dengan aman
         </p>
         <form action="{{ route('biodataAdd') }}" method="POST">
             @csrf

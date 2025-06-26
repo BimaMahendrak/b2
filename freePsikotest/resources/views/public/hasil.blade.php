@@ -8,12 +8,12 @@
             @foreach ($hasil as $kategori => $data)
                 <div class="mb-4">
                     <div class="row align-items-center">
-                        <div class="col-md-2 col-4 text-start fw-semibold">
+                        <div class="col-md-3 col-4 text-start fw-semibold">
                             {{ $kategori }}: <i>{{ $data['status'] }}</i>
                         </div>
-                        <div class="col-md-10 col-8">
+                        <div class="col-md-9 col-8">
                             <div class="custom-progress">
-                                <div class="custom-progress-bar" style="width: {{ min($data['total'],100) }}%;">
+                                <div class="custom-progress-bar" style="width: {{ min($data['total'], 100) }}%;">
                                     {{ $data['total'] }}
                                 </div>
                             </div>

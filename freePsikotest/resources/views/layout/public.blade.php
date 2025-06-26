@@ -15,6 +15,7 @@
             height: 100%;
             font-family: 'Montserrat', sans-serif;
             background-color: #F5F5F5;
+            color: #1f2020;
         }
 
         .wrapper {
@@ -30,7 +31,7 @@
         .button {
             background-color: #B7D7E8;
             text-decoration: none;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             color: #436374;
             display: inline-block;
             padding: 0.75rem 1rem;

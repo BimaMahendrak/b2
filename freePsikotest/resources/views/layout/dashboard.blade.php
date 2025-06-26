@@ -7,12 +7,15 @@
     <title>Dashboard BarBim</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         html,
         body {
             font-family: 'Montserrat', sans-serif;
             height: 100%;
+            color: #1f2020;
         }
 
         .sidebar {
@@ -32,7 +35,7 @@
         }
 
         .content-area {
-            margin-left: 250px;
+            margin-left: 138px;
         }
 
         @media (max-width: 768px) {
@@ -63,7 +66,77 @@
                 padding: 0.5rem 1rem;
             }
         }
+
+        .button {
+            background-color: #B7D7E8;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            color: #436374;
+            display: inline-block;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            color: #F5F5F5;
+            background-color: #436374;
+            transform: scale(1.05);
+        }
+
+        body.swal2-shown>[aria-hidden='true'] {
+            transition: 0.1s filter;
+            filter: blur(3px);
+        }
+
+        div.dataTables_wrapper div.dataTables_paginate ul.pagination>li.page-item>a {
+            color: #436374 !important;
+            border: 1px solid #436374 !important;
+            background-color: #fff !important;
+        }
+
+        div.dataTables_wrapper div.dataTables_paginate ul.pagination>li.page-item>a:hover {
+            background-color: #B7D7E8 !important;
+            color: #fff !important;
+            border-color: #B7D7E8 !important;
+        }
+
+        div.dataTables_wrapper div.dataTables_paginate ul.pagination>li.page-item.active>a {
+            background-color: #436374 !important;
+            color: #fff !important;
+            border-color: #436374 !important;
+        }
+
+        div.dataTables_wrapper div.dataTables_paginate ul.pagination>li.page-item>a:focus {
+            box-shadow: 0 0 0 0.2rem rgba(67, 99, 116, 0.25) !important;
+        }
+
+        .custom-table {
+            background-color: #fefefe;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 0.75rem 1rem;
+            vertical-align: middle;
+            border: none;
+        }
+
+        .custom-table th {
+            background-color: #436374;
+            color: white;
+        }
+
+        .custom-table td {
+            background-color: #E6F0F5;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
 </head>
 
 <body>
@@ -71,9 +144,12 @@
         ☰
     </button>
     <div class="sidebar position-fixed d-flex flex-column p-3" style="justify-content: space-between">
-        <h4 class="mb-4">BarBim</h4>
         <ul class="nav nav-pills flex-column text-center">
-            <li class="nav-item">
+            <li class="border-bottom">
+                <img src="{{ asset('favicon.ico') }}" alt="Logo BarBim" style="width: 2rem">
+                <h4 class="mb-3 fw-semibold">BarBim</h4>
+            </li>
+            <li class="nav-item my-3">
                 <a href="{{ route('dashboard') }}"
                     class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-speedometer2"
@@ -83,31 +159,35 @@
                         <path fill-rule="evenodd"
                             d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3" />
                     </svg>
+                    <div style="font-size: 0.8rem">Dashboard</div>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mb-3">
+                <a href="{{ route('soal') }}" class="nav-link {{ request()->routeIs('soal') ? 'active' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-card-heading"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                        <path
+                            d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                    <div style="font-size: 0.8rem">Soal</div>
+                </a>
+            </li>
+            <li class="nav-item mb-3">
                 <a href="{{ route('respon') }}" class="nav-link {{ request()->routeIs('respon') ? 'active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-person"
                         viewBox="0 0 16 16">
                         <path
                             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                     </svg>
+                    <div style="font-size: 0.8rem">Respon</div>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('soal') }}" class="nav-link {{ request()->routeIs('soal') ? 'active' : '' }}">
-                    Kelola Soal
-                </a>
-            </li>
-            <li class="nav-item">
-                <form action="{{ route('logout') }}" method="POST" class="mt-3">
-                    @csrf
-                    <button class="nav-link text-start btn btn-link text-white p-0" type="submit">Keluar</button>
-                </form>
             </li>
         </ul>
-        <div class="border-top">
-            <p onclick="logout()" class="d-flex align-items-center justify-content-center my-3 text-decoration-none">
+        <div class="text-center border-top">
+            <p onclick="logout()"
+                class="d-flex align-items-center justify-content-center mt-3 mb-0 text-decoration-none">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="#F5F5F5" class="bi bi-box-arrow-right"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -116,14 +196,31 @@
                         d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                 </svg>
             </p>
+            <div style="font-size: 0.8rem">Keluar</div>
         </div>
     </div>
-    <div class="content-area p-4">
+
+    {{-- ditaro diatas biar kedetect --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+
+    <div class="content-area p-5">
         @yield('content')
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('successLogin'))
         <script>
             Swal.fire({

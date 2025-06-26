@@ -21,7 +21,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h2 class="fw-bold mb-0">128</h2>
+                        <h2 class="fw-bold mb-0">{{ $jumlahSoal }}</h2>
                         <small class="text-muted">Soal</small>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h2 class="fw-bold mb-0">123</h2>
+                        <h2 class="fw-bold mb-0">{{ $jumlahResponden }}</h2>
                         <small class="text-muted">Responden</small>
                     </div>
                 </div>
@@ -54,10 +54,12 @@
             data: {
                 labels: ['Depression', 'Anxiety', 'Stress'],
                 datasets: [{
-                    data: [20, 90, 35],
+                    data: @json($rataRata),
                     label: "Rata-Rata Hasil Responden",
                     borderColor: '#436374',
-                    backgroundColor: ['rgba(168, 213, 186, 0.6)', 'rgba(193, 225, 193, 0.6)', 'rgba(183, 215, 232, 0.6)'],
+                    backgroundColor: [
+                        'rgba(168, 213, 186, 0.6)','rgba(193, 225, 193, 0.6)','rgba(183, 215, 232, 0.6)'
+                    ],
                     tension: 0.4
                 }]
             },
@@ -69,5 +71,4 @@
             }
         });
     </script>
-
 @endsection

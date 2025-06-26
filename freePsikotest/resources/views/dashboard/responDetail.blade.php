@@ -29,28 +29,36 @@
                         <tbody>
                             <tr>
                                 <th>Nama Lengkap</th>
-                                <td>Halo aku barita</td>
+                                <td>{{ $responden->nama_lengkap }}</td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin</th>
-                                <td>Perempuan</td>
+                                <td>{{ $responden->jenis_kelamin }}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal Lahir</th>
-                                <td>10 Oktober 2025</td>
+                                <td>{{ $responden->tempat_tanggal_lahir }}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td>bdavitya@gmail.com</td>
+                                <td>{{ $responden->email }}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal Tes</th>
-                                <td>Rabu, 80 Februari 2026</td>
+                                <td>{{ $responden->tanggal_ujian }}</td>
                             </tr>
                             <tr>
                                 <th>Feedback</th>
-                                <td><img src="{{ asset('images/hiu/calm.svg') }}" width="40rem"> 1, jujur yah gitu deh
-                                    pokonya
+                                <td>
+                                    @php
+                                        $feedback = \App\Models\Feedback::where('id_responden', $responden->id_responden)->first();
+                                    @endphp
+                                    @if($feedback)
+                                        <b>Rating:</b> {{ $feedback->rating }}<br>
+                                        <b>Ulasan:</b> {{ $feedback->ulasan }}
+                                    @else
+                                        <span class="text-muted">Belum ada feedback</span>
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>
@@ -62,6 +70,11 @@
                 <div class="bg-white p-4">
                     <canvas id="mainChart" height="200"></canvas>
                 </div>
+                <ul class="mt-3">
+                    @foreach($hasil as $kategori => $nilai)
+                        <li><b>{{ $kategori }}</b>: {{ $nilai }}</li>
+                    @endforeach
+                </ul>
             </div>
         </div>
         <b>Detail Jawaban:</b>
@@ -69,15 +82,15 @@
             <table class="table custom-table text-center align-middle mt-3">
                 <tr>
                     <th>Soal</th>
-                    @for ($i = 1; $i <= 21; $i++)
-                        <td style="background-color: #B7D7E8;">{{ $i }}</td>
-                    @endfor
+                    @foreach($jawaban as $j)
+                        <td style="background-color: #B7D7E8;">{{ $j->id_pertanyaan }}</td>
+                    @endforeach
                 </tr>
                 <tr>
                     <th>Respon</th>
-                    @for ($i = 1; $i <= 21; $i++)
-                        <td>{{ $i }}</td>
-                    @endfor
+                    @foreach($jawaban as $j)
+                        <td>{{ $j->jawaban }}</td>
+                    @endforeach
                 </tr>
             </table>
         </div>
@@ -90,10 +103,18 @@
             data: {
                 labels: ['Depression', 'Anxiety', 'Stress'],
                 datasets: [{
-                    data: [20, 90, 35],
+                    data: [
+                        {{ $hasil['Depression'] ?? 0 }},
+                        {{ $hasil['Anxiety'] ?? 0 }},
+                        {{ $hasil['Stress'] ?? 0 }}
+                    ],
                     label: "Hasil Responden",
                     borderColor: '#436374',
-                    backgroundColor: ['rgba(168, 213, 186, 0.6)', 'rgba(193, 225, 193, 0.6)', 'rgba(183, 215, 232, 0.6)'],
+                    backgroundColor: [
+                        'rgba(168, 213, 186, 0.6)',
+                        'rgba(193, 225, 193, 0.6)',
+                        'rgba(183, 215, 232, 0.6)'
+                    ],
                     tension: 0.4
                 }]
             },

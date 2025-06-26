@@ -47,31 +47,21 @@ Route::get('/selesai', function () {
 
 
 // Dashboard
-//Route::middleware(['auth'])->prefix('dashboard')->group(function () {
-    Route::prefix('dashboard')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.index'); 
-    })->name('dashboard');
-
-    Route::get('/login', function () {
-        return view('dashboard.login');
-    })->name('login');
-
-    Route::post('/login', [dashboardController::class, 'login'])->name('loging');
+Route::prefix('dashboard')->middleware('admin')->group(function () {
+    Route::get('/', [dashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/soal', [dashboardController::class, 'soal'])->name('soal');
-
     Route::post('/soalAdd', [dashboardController::class, 'soalAdd'])->name('soalAdd');
-
     Route::post('/soalEdit', [dashboardController::class, 'soalEdit'])->name('soalEdit');
-
     Route::post('/soalDelete', [dashboardController::class, 'soalDelete'])->name('soalDelete');
-
     Route::get('/respon', [dashboardController::class, 'respon'])->name('respon');
-
-    Route::get('/responDetail', [dashboardController::class, 'responDetail'])->name('responDetail');
-
+    Route::get('/responDetail/{id}', [dashboardController::class, 'responDetail'])->name('responDetail');
     Route::post('/responDelete', [dashboardController::class, 'responDelete'])->name('responDelete');
-    
     Route::get('/logout',  [dashboardController::class, 'logout'])->name('logout');
 });
+
+// Login
+Route::get('/dashboard/login', function () {
+    return view('dashboard.login');
+})->name('login');
+Route::post('/dashboard/login', [dashboardController::class, 'login'])->name('loging');

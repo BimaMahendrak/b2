@@ -23,6 +23,6 @@ class Pertanyaan extends Model
 	
 	public function pertanyaan()
 	{
-		return $this->belongsTo(\App\Models\Pertanyaan::class, 'id_pertanyaan');
+		return $this->belongsTo(Pertanyaan::class, 'id_pertanyaan');
 	}
 }

@@ -37,8 +37,7 @@
                         <input type="submit" class="button" style="border:0;"
                             value="{{ $no == $total ? 'Selesai' : 'Selanjutnya' }}">
                     </div>
-                    {{-- harusnya durasi timer tidak diperlihatkan --}}
-                    <div id="timer" class="fw-bold text-danger fs-5"></div>
+                    <div id="timer" hidden class="fw-bold text-danger fs-5"></div>
                 </form>
             @else
                 <div class="alert alert-warning">Soal tidak ditemukan.</div>
@@ -80,7 +79,7 @@
 
         function updateTimer() {
             let waktuSekarang = new Date(new Date().getTime() + offset);
-            let elapsed = Math.floor((waktuSekarang - waktuMulaiDate) / 10);
+            let elapsed = Math.floor((waktuSekarang - waktuMulaiDate) / 1000);
             let sisa = waktuTes - elapsed;
 
             if (sisa <= 0 && !waktuHabis) {

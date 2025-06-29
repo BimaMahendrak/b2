@@ -14,7 +14,7 @@
                         <div class="col-md-9 col-8">
                             <div class="custom-progress">
                                 <div class="custom-progress-bar" style="width: {{ min($data['total'], 100) }}%;">
-                                    {{ $data['total'] }}
+                                    {{ $data['total'] }}%
                                 </div>
                             </div>
                         </div>

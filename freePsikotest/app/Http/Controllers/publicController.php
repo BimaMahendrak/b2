@@ -163,7 +163,7 @@ class publicController extends Controller
                 $status = '-';
             }
             $hasil[$nama] = [
-                'total' => $total,
+                'total' => round(($total / 21) * 100, 2),
                 'status' => $status,
             ];
         }

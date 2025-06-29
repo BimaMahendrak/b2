@@ -16,8 +16,8 @@
             </div>
             <div class="form-floating mb-3 ">
                 <select class="form-select" id="jenisKelamin" name="jenisKelamin" required placeholder="Jenis Kelamin">
-                    <option value="perempuan">Perempuan</option>
-                    <option value="laki-laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
                 </select>
                 <label for="jenisKelamin">Jenis Kelamin</label>
             </div>

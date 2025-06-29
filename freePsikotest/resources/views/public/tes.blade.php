@@ -15,22 +15,22 @@
                         <label class="custom-radio d-block mb-3">
                             <input type="radio" name="pilihan" value="0" required>
                             <span class="checkmark"></span>
-                            Tidak sesuai dengan saya sama sekali
+                            Tidak sesuai dengan kondisi saya sama sekali
                         </label>
                         <label class="custom-radio d-block mb-3">
                             <input type="radio" name="pilihan" value="1">
                             <span class="checkmark"></span>
-                            Sesuai dengan saya sampai tingkat tertentu
+                            Cukup sesuai dengan kondisi saya
                         </label>
                         <label class="custom-radio d-block mb-3">
                             <input type="radio" name="pilihan" value="2">
                             <span class="checkmark"></span>
-                            Sesuai dengan saya sampai batas yang dapat dipertimbangkan
+                            Sesuai dengan kondisi saya
                         </label>
                         <label class="custom-radio d-block mb-3">
                             <input type="radio" name="pilihan" value="3">
                             <span class="checkmark"></span>
-                            Sangat sesuai dengan saya
+                            Sangat sesuai dengan kondisi saya
                         </label>
                     </div>
                     <div class="text-start" style="margin-bottom: 20px;">

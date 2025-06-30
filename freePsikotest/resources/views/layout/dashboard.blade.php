@@ -9,8 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
-    
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         html,
         body {
@@ -251,4 +249,5 @@
     @stack('scripts')
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>
